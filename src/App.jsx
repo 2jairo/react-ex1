@@ -9,8 +9,8 @@ function App() {
       { name: 'A', background: '#ff6b6b' },
       { name: 'B', background: '#4d9cff' },
     ],
-    gridWidth: 6,
-    gridHeight: 5,
+    gridWidth: 7,
+    gridHeight: 6,
     conecta: 4,
   })
 
