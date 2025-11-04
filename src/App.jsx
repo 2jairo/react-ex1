@@ -14,11 +14,26 @@ function App() {
     conecta: 4,
   })
 
+
+  const setConfigWrapper = (conf) => {
+    const players = Array.isArray(conf.players)
+      ? conf.players.filter((p) => p.name && p.background)
+      : config.players
+
+    setConfig(prev => ({
+      players,
+      gridWidth: parseInt(conf.gridWidth) || prev.gridWidth,
+      gridHeight: parseInt(conf.gridHeight) || prev.gridHeight,
+      conecta: parseInt(conf.conecta) || prev.conecta,
+    }))
+
+  }
+
   return (
     <>
       {inGame
         ? <Conecta4 players={config.players} gridW={config.gridWidth} gridH={config.gridHeight} conecta={config.conecta} setInGame={setInGame} />
-        : <Conecta4Config config={config} setConfig={setConfig} setInGame={setInGame}/>
+        : <Conecta4Config config={config} setConfig={setConfigWrapper} setInGame={setInGame} />
       }
     </>
   )
